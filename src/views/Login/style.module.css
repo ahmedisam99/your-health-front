@@ -1,0 +1,31 @@
+.login {
+  width: 100%;
+  min-height: calc(100vh - 64px - 64px);
+
+  background-image: url(../../assets/images/home-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 50px;
+}
+
+.loginCard {
+  width: 600px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 45px;
+  padding: 25px 0;
+}
+
+.input {
+  width: 400px !important;
+  border-radius: 10px !important;
+}
+
+.link:hover {
+  text-decoration: underline !important;
+}

@@ -1,0 +1,18 @@
+.home {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../assets/images/home-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  padding: 150px 80px;
+}
+
+.lh {
+  line-height: 60px !important;
+}
+
+.borderRadius {
+  border-radius: 10px;
+}
