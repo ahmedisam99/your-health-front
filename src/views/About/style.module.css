@@ -1,0 +1,27 @@
+.about {
+  width: 100%;
+  min-height: calc(100vh - 64px - 64px);
+  background: #ffffff 0% 0% no-repeat padding-box;
+
+  padding: 70px 70px;
+}
+
+.title {
+  color: #0192a3 !important;
+}
+
+.card {
+  background: #ebebeb 0% 0% no-repeat padding-box;
+  border-radius: 84px;
+  padding: 20px 30px;
+  height: 100%;
+}
+
+.grey {
+  color: #707070;
+}
+
+.para {
+  font-size: 24px;
+  line-height: 40px;
+}

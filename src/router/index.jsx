@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import AboutView from 'views/About';
 import ContactView from 'views/Contact';
 import CrewView from 'views/Crew';
 
@@ -15,6 +16,7 @@ export default function Router() {
         <Route exact path='/signup' component={SignupView} />
         <Route exact path='/contact' component={ContactView} />
         <Route exact path='/crew' component={CrewView} />
+        <Route exact path='/about' component={AboutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
       </Switch>
