@@ -1,0 +1,15 @@
+.contact {
+  width: 100%;
+  min-height: calc(100vh - 64px - 64px);
+
+  padding: 70px 70px;
+}
+
+.title {
+  color: #0192a3 !important;
+}
+
+.icon {
+  font-size: 26px;
+  color: var(--yh-prim-color);
+}
