@@ -2,7 +2,7 @@
   width: 100%;
   min-height: calc(100vh - 64px - 64px);
 
-  background-image: url(../../assets/images/home-bg.png);
+  background-image: url(../../../assets/images/home-bg.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
