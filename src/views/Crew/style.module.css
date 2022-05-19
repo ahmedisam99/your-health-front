@@ -1,0 +1,33 @@
+.crew {
+  width: 100%;
+  min-height: calc(100vh - 64px - 64px);
+
+  padding: 70px 70px;
+}
+
+.title {
+  color: #0192a3 !important;
+}
+
+.card {
+  box-shadow: 15px 15px 15px #00000029;
+  border-radius: 48px;
+  padding: 20px 0;
+}
+
+.cardCol:nth-child(odd) > .card {
+  background: #cb333b 0% 0% no-repeat padding-box;
+}
+
+.cardCol:nth-child(even) > .card {
+  background: #ffffff 0% 0% no-repeat padding-box;
+}
+
+.cardCol:nth-child(even) > .card * {
+  color: black !important;
+}
+
+.img {
+  border: 1px solid #707070;
+  border-radius: 50%;
+}
