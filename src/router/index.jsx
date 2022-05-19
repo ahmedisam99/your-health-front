@@ -1,11 +1,11 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import AboutView from 'views/About';
-import ContactView from 'views/Contact';
-import CrewView from 'views/Crew';
 
-import HomeView from 'views/Home';
-import LoginView from 'views/Login';
-import SignupView from 'views/Signup';
+import LoginView from 'views/public/Login';
+import SignupView from 'views/public/Signup';
+import HomeView from 'views/public/Home';
+import AboutView from 'views/public/About';
+import CrewView from 'views/public/Crew';
+import ContactView from 'views/public/Contact';
 
 export default function Router() {
   return (
