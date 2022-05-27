@@ -18,8 +18,6 @@ const { Header } = Layout;
 export default function DoctorNavbar() {
   const { data: user } = useQuery('doctor-me', doctorGetMe);
 
-  console.log('user', user);
-
   return (
     <Header className={styles.navbar}>
       <Space direction='horizontal' align='center' size={15}>
