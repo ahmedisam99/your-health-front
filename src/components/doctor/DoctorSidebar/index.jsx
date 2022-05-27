@@ -8,7 +8,7 @@ const { Sider } = Layout;
 
 export default function DoctorSidebar() {
   return (
-    <Sider className={styles.sidebar}>
+    <Sider className={styles.sidebar} width={250}>
       <div className={`yh-w-100 yh-center-all ${styles.logoContainer}`}>
         <Image
           preview={false}
@@ -23,7 +23,7 @@ export default function DoctorSidebar() {
         <Menu.Item className='yh-w-100' key='0' icon={<UserOutlined />}>
           الرئيسية
         </Menu.Item>
-        <Menu.Item className='yh-w-100' key='0' icon={<UserOutlined />}>
+        <Menu.Item className='yh-w-100' key='1' icon={<UserOutlined />}>
           قائمة المرضى
         </Menu.Item>
       </Menu>
