@@ -6,6 +6,8 @@ import HomeView from 'views/public/Home';
 import AboutView from 'views/public/About';
 import CrewView from 'views/public/Crew';
 import ContactView from 'views/public/Contact';
+import DoctorRouter from './Doctor';
+import PatientRouter from './Patient';
 
 export default function Router() {
   return (
@@ -17,6 +19,8 @@ export default function Router() {
         <Route exact path='/contact' component={ContactView} />
         <Route exact path='/crew' component={CrewView} />
         <Route exact path='/about' component={AboutView} />
+        <Route path='/doctor' component={DoctorRouter} />
+        <Route path='/patient' component={PatientRouter} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
       </Switch>

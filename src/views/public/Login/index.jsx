@@ -4,22 +4,95 @@ import {
   Form,
   Image,
   Input,
+  message,
   Row,
   Select,
   Space,
   Typography,
 } from 'antd';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import { useQueryClient, useMutation } from 'react-query';
 
+import { doctorLogin } from 'api/doctor';
 import PublicLayout from 'components/PublicLayout';
 import logoRed from 'assets/images/logo-red.png';
 import styles from './style.module.css';
-import { Link } from 'react-router-dom';
+import { patientLogin } from 'api/patient';
+import { doctorInstance, patientInstance } from 'api/axios';
 
 const { Option } = Select;
 
 export default function LoginView() {
+  const doctorMutation = useMutation(doctorLogin);
+  const patientMutation = useMutation(patientLogin);
+  const queryClient = useQueryClient();
+
+  const history = useHistory();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+
   const onSubmit = (values) => {
-    console.log('values', values);
+    if (values.as === 'doctor') {
+      doctorMutation.mutate(
+        { email: values.email, password: values.password },
+        {
+          onSuccess: async ({ accessToken }) => {
+            localStorage.setItem('doctorAccessToken', accessToken);
+            doctorInstance.defaults.headers[
+              'Authorization'
+            ] = `Bearer ${accessToken}`;
+
+            await queryClient.invalidateQueries('doctor-me');
+            history.push('/doctor');
+          },
+          onError: (mutationError) => {
+            if (
+              mutationError?.response?.status === 400 &&
+              Array.isArray(mutationError?.response?.data?.message)
+            ) {
+              mutationError.response.data.message.forEach((msg) => {
+                message.error(msg);
+              });
+            } else {
+              message.error(
+                mutationError?.response?.data?.message ||
+                  mutationError?.message,
+              );
+            }
+          },
+        },
+      );
+    } else if (values.as === 'patient') {
+      patientMutation.mutate(
+        { email: values.email, password: values.password },
+        {
+          onSuccess: async ({ accessToken }) => {
+            localStorage.setItem('patientAccessToken', accessToken);
+            patientInstance.defaults.headers[
+              'Authorization'
+            ] = `Bearer ${accessToken}`;
+
+            await queryClient.invalidateQueries('patient-me');
+            history.push('/patient');
+          },
+          onError: (mutationError) => {
+            if (
+              mutationError?.response?.status === 400 &&
+              Array.isArray(mutationError?.response?.data?.message)
+            ) {
+              mutationError.response.data.message.forEach((msg) => {
+                message.error(msg);
+              });
+            } else {
+              message.error(
+                mutationError?.response?.data?.message ||
+                  mutationError?.message,
+              );
+            }
+          },
+        },
+      );
+    } else return;
   };
 
   return (
@@ -28,7 +101,7 @@ export default function LoginView() {
         className={styles.login}
         layout='vertical'
         onFinish={onSubmit}
-        initialValues={{ as: 'doctor' }}>
+        initialValues={{ as: params.get('as') || 'doctor' }}>
         <div className={styles.loginCard}>
           <Row gutter={[0, 25]} justify='center'>
             <Col className='yh-center-row' span={24}>
@@ -93,6 +166,7 @@ export default function LoginView() {
                 <Button
                   className={['green-btn', styles.input]}
                   type='primary'
+                  loading={doctorMutation.isLoading}
                   htmlType='submit'>
                   تسجيل الدخول
                 </Button>

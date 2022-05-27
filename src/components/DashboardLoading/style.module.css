@@ -1,0 +1,44 @@
+.dashboardLoading {
+  width: 100vw !important;
+  height: 100vh !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  font-size: 128px;
+}
+
+.heart {
+  animation: heartbeat 1s infinite;
+
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.pulse {
+  stroke-dasharray: 1468.7159423828125;
+  stroke-dashoffset: 1468.7159423828125;
+  animation: pulse 2s ease infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes pulse {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
