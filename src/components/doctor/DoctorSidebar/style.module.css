@@ -10,3 +10,7 @@
   height: 64px;
   background-color: #fff;
 }
+
+.menu {
+  margin-block-start: 12px;
+}
