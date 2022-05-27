@@ -1,6 +1,6 @@
 import Icon from '@ant-design/icons';
 
-import HeartSvg from 'icons/heart.svg';
+import HeartSvg from 'components/icons/heart.svg';
 import styles from './style.module.css';
 
 export default function DashboardLoading() {
