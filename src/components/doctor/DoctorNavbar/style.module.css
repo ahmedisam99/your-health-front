@@ -1,0 +1,6 @@
+.navbar {
+  width: calc(100vw - 200px);
+  position: fixed;
+  margin-inline-start: 200px;
+  padding: 0 32px;
+}
