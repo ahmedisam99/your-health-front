@@ -4,6 +4,7 @@ import {
   QueryClientProvider,
   setLogger as setReactQueryLogger,
 } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import ar from 'antd/lib/locale/ar_EG';
 
 import Router from './router';
@@ -30,6 +31,8 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <ConfigProvider direction='rtl' locale={ar}>
         <Router />
+
+        <ReactQueryDevtools />
       </ConfigProvider>
     </QueryClientProvider>
   );
