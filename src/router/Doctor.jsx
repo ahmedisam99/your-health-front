@@ -11,7 +11,10 @@ export default function DoctorRouter() {
     data: user,
     isLoading,
     isSuccess,
-  } = useQuery('doctor-me', doctorGetMe);
+  } = useQuery('doctor-me', doctorGetMe, {
+    cacheTime: 0,
+    staleTime: 0,
+  });
   const isAuthenticated = isSuccess && !!user && user.role === 'doctor';
 
   if (isLoading) {
