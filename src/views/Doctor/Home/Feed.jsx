@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Col, message, Row, Skeleton, Typography, Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 
 import { doctorGetPosts } from 'api/doctor';
 import PostCard from './PostCard';
