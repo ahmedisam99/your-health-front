@@ -2,6 +2,7 @@ import { Col, Row, Typography } from 'antd';
 
 import DoctorLayout from 'components/doctor/DoctorLayout';
 import CreatePostCard from './CreatePostCard';
+import Feed from './Feed';
 import styles from './style.module.css';
 
 export default function DoctorHomeView() {
@@ -13,7 +14,15 @@ export default function DoctorHomeView() {
         </Col>
 
         <Col span={16}>
-          <CreatePostCard />
+          <Row gutter={[0, 25]}>
+            <Col span={24}>
+              <CreatePostCard />
+            </Col>
+
+            <Col span={24}>
+              <Feed />
+            </Col>
+          </Row>
         </Col>
 
         <Col span={8}>

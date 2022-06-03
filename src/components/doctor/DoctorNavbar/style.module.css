@@ -3,6 +3,7 @@
   position: fixed;
   margin-inline-start: 250px;
   padding: 0 32px;
+  z-index: 1;
 
   display: flex;
   justify-content: space-between;

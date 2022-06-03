@@ -1,6 +1,6 @@
 import Icon from '@ant-design/icons';
 
-import HeartSvg from 'components/icons/heart.svg';
+import HeartPulseSvg from 'components/icons/heart-with-pulse.svg';
 import styles from './style.module.css';
 
 export default function DashboardLoading() {
@@ -9,7 +9,7 @@ export default function DashboardLoading() {
       <Icon
         className={styles.icon}
         component={() => (
-          <HeartSvg
+          <HeartPulseSvg
             heartClassName={styles.heart}
             pulseClassName={styles.pulse}
           />

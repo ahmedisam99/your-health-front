@@ -1,4 +1,4 @@
-export default function HeartSvg({
+export default function HeartPulseSvg({
   className = '',
   circleClassName = '',
   heartClassName = '',
