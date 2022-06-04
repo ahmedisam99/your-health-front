@@ -34,22 +34,22 @@ export default function OrderModalBody({ doctor, setOrderModal }) {
     <Form initialValues={{ doctorId: doctor._id }} onFinish={onOrder}>
       <Descriptions title='تفاصيل الطبيب' bordered layout='vertical' column={4}>
         <Descriptions.Item
-          label={<span className='yh-fw-500'>الاسم</span>}
+          label={<span className='yh-fw-600'>الاسم</span>}
           span={2}>
           د. {doctor.name}
         </Descriptions.Item>
         <Descriptions.Item
-          label={<span className='yh-fw-500'>التخصص</span>}
+          label={<span className='yh-fw-600'>التخصص</span>}
           span={2}>
           {doctor.specialization}
         </Descriptions.Item>
         <Descriptions.Item
-          label={<span className='yh-fw-500'>البريد الإلكتروني</span>}
+          label={<span className='yh-fw-600'>البريد الإلكتروني</span>}
           span={2}>
           {doctor.email}
         </Descriptions.Item>
         <Descriptions.Item
-          label={<span className='yh-fw-500'>رقم الهاتف</span>}
+          label={<span className='yh-fw-600'>رقم الهاتف</span>}
           span={2}>
           <div style={{ direction: 'ltr', textAlign: 'right' }}>
             {doctor.phoneNumber}
