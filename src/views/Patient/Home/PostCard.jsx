@@ -151,7 +151,7 @@ export default function PostCard({ post }) {
           <Row gutter={[0, 10]}>
             {post.comments?.map((comment) =>
               comment.doctor ? (
-                <Col span={24}>
+                <Col key={comment._id} span={24}>
                   <Row gutter={[0, 10]}>
                     <Col span={24}>
                       <Space direction='horizontal' align='center' size={15}>
@@ -184,7 +184,7 @@ export default function PostCard({ post }) {
                   </Row>
                 </Col>
               ) : comment.patient ? (
-                <Col span={24}>
+                <Col key={comment._id} span={24}>
                   <Row gutter={[0, 10]}>
                     <Col span={24}>
                       <Space direction='horizontal' align='center' size={15}>
