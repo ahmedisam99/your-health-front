@@ -5,6 +5,7 @@ import { patientGetMe } from 'api/patient';
 import DashboardLoading from 'components/DashboardLoading';
 import PatientHomeView from 'views/Patient/Home';
 import PatientLogoutView from 'views/Patient/Logout';
+import PatientDoctorsView from 'views/Patient/Doctors';
 
 export default function PatientRouter() {
   const {
@@ -29,6 +30,7 @@ export default function PatientRouter() {
     <BrowserRouter basename='/patient'>
       <Switch>
         <Route exact path='/' component={PatientHomeView} />
+        <Route exact path='/doctors' component={PatientDoctorsView} />
         <Route exact path='/logout' component={PatientLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
