@@ -8,7 +8,16 @@ import d3 from 'assets/images/doctors/d3.png';
 import d4 from 'assets/images/doctors/d4.png';
 import d5 from 'assets/images/doctors/d5.png';
 import d6 from 'assets/images/doctors/d6.png';
+import p1 from 'assets/images/patients/p1.webp';
+import p2 from 'assets/images/patients/p2.jpeg';
+import p3 from 'assets/images/patients/p3.webp';
+import p4 from 'assets/images/patients/p4.webp';
 import styles from './style.module.css';
+
+console.log('p1', p1);
+console.log('p2', p2);
+console.log('p3', p3);
+console.log('p4', p4);
 
 const doctors = [
   {
