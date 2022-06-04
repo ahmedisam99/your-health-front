@@ -8,6 +8,7 @@ import {
   Dropdown,
   Image,
   Input,
+  message,
   Row,
   Space,
   Typography,
@@ -21,7 +22,7 @@ import Icon, {
 } from '@ant-design/icons';
 import EmojiPicker from 'emoji-picker-react';
 
-import { doctorGetMe } from 'api/doctor';
+import { doctorGetMe, doctorCreateComment } from 'api/doctor';
 import faceImg from 'assets/icons/face.png';
 import styles from './style.module.css';
 
@@ -49,6 +50,7 @@ export default function PostCard({ post }) {
   const [isLiked, setIsLiked] = useState(false);
   const [commentsVisible, setCommentsVisible] = useState(false);
   const [comment, setComment] = useState('');
+  const [comments, setComments] = useState(post.comments || []);
   const { data: user } = useQuery('doctor-me', doctorGetMe);
 
   const onEmojiClick = (_, emoji) => {
@@ -65,8 +67,19 @@ export default function PostCard({ post }) {
     }
   };
 
-  const handleComment = () => {
-    console.log('comment', comment);
+  const handleCreate = async () => {
+    if (!comment) return;
+
+    try {
+      const data = await doctorCreateComment(comment, post._id);
+
+      setComments([data, ...comments]);
+      setComment('');
+    } catch (error) {
+      message.error(
+        error.response?.data?.message || 'حدث خطأ أثناء تحميل المنشورات',
+      );
+    }
   };
 
   return (
@@ -113,7 +126,7 @@ export default function PostCard({ post }) {
                   component={CommentOutlined}
                 />
 
-                <Typography.Text>{post.comments?.length || 0}</Typography.Text>
+                <Typography.Text>{comments.length || 0}</Typography.Text>
               </Space>
             </Button>
           </Col>
@@ -146,10 +159,10 @@ export default function PostCard({ post }) {
         </Row>
       </Col>
 
-      {commentsVisible && !!post.comments?.length && (
+      {commentsVisible && !!comments.length && (
         <Col className={styles.commentsContainer} span={24}>
           <Row gutter={[0, 10]}>
-            {post.comments?.map((comment) =>
+            {comments.map((comment) =>
               comment.doctor ? (
                 <Col key={comment._id} span={24}>
                   <Row gutter={[0, 10]}>
@@ -243,7 +256,7 @@ export default function PostCard({ post }) {
             onKeyDown={(e) => {
               if (e.key !== 'Enter') return;
 
-              handleComment();
+              handleCreate();
             }}
             suffix={
               <Space direction='horizontal' align='center' size={10}>
@@ -259,7 +272,7 @@ export default function PostCard({ post }) {
                 </Dropdown>
 
                 <Icon
-                  onClick={handleComment}
+                  onClick={handleCreate}
                   className={styles.postCardActionsIcon}
                   component={SendOutlined}
                 />
