@@ -17,6 +17,7 @@
 }
 
 .orderCardContentCardPara {
+  white-space: pre-line;
   color: #707070;
   flex-grow: 1;
 }
