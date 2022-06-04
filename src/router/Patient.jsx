@@ -3,13 +3,18 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import { patientGetMe } from 'api/patient';
 import DashboardLoading from 'components/DashboardLoading';
+import PatientHomeView from 'views/Patient/Home';
+import PatientLogoutView from 'views/Patient/Logout';
 
 export default function PatientRouter() {
   const {
     data: user,
     isLoading,
     isSuccess,
-  } = useQuery('patient-me', patientGetMe);
+  } = useQuery('patient-me', patientGetMe, {
+    cacheTime: 0,
+    staleTime: 0,
+  });
   const isAuthenticated = isSuccess && !!user && user.role === 'patient';
 
   if (isLoading) {
@@ -23,7 +28,8 @@ export default function PatientRouter() {
   return (
     <BrowserRouter basename='/patient'>
       <Switch>
-        <Route exact path='/' component={() => <h1>مريض</h1>} />
+        <Route exact path='/' component={PatientHomeView} />
+        <Route exact path='/logout' component={PatientLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
       </Switch>

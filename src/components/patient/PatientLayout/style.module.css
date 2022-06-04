@@ -1,0 +1,9 @@
+.layout {
+  min-height: 100vh;
+}
+
+.content {
+  margin-inline-start: 250px;
+  margin-block-start: 64px;
+  padding: 32px;
+}
