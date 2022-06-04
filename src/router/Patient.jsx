@@ -6,6 +6,7 @@ import DashboardLoading from 'components/DashboardLoading';
 import PatientHomeView from 'views/Patient/Home';
 import PatientLogoutView from 'views/Patient/Logout';
 import PatientDoctorsView from 'views/Patient/Doctors';
+import PatientOrdersView from 'views/Patient/Orders';
 
 export default function PatientRouter() {
   const {
@@ -31,6 +32,7 @@ export default function PatientRouter() {
       <Switch>
         <Route exact path='/' component={PatientHomeView} />
         <Route exact path='/doctors' component={PatientDoctorsView} />
+        <Route exact path='/orders' component={PatientOrdersView} />
         <Route exact path='/logout' component={PatientLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
