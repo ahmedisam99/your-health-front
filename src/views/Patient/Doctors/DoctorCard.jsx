@@ -17,7 +17,7 @@ export default function DoctorCard({ doctor, setOrderModal }) {
         />
 
         <Typography.Title className='yh-wc' level={5}>
-          {doctor.name}
+          د. {doctor.name}
         </Typography.Title>
         <Typography.Title className='yh-wc' level={5}>
           {doctor.specialization}
