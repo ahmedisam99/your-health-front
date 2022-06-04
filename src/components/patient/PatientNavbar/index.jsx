@@ -16,7 +16,7 @@ import styles from './style.module.css';
 const { Header } = Layout;
 
 export default function PatientNavbar() {
-  const { data: user } = useQuery('patient-me', patientGetMe);
+  const { data: user } = useQuery('pat-me', patientGetMe);
 
   return (
     <Header className={styles.navbar}>

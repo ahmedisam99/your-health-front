@@ -11,7 +11,7 @@ export default function PatientRouter() {
     data: user,
     isLoading,
     isSuccess,
-  } = useQuery('patient-me', patientGetMe, {
+  } = useQuery('pat-me', patientGetMe, {
     cacheTime: 0,
     staleTime: 0,
   });

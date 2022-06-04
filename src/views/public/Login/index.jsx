@@ -72,7 +72,7 @@ export default function LoginView() {
               'Authorization'
             ] = `Bearer ${accessToken}`;
 
-            await queryClient.invalidateQueries('patient-me');
+            await queryClient.invalidateQueries('pat-me');
             history.push('/patient');
           },
           onError: (mutationError) => {

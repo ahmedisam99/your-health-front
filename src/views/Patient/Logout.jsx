@@ -9,7 +9,7 @@ export default function PatientLogoutView() {
   localStorage.removeItem('patientAccessToken');
   patientInstance.defaults.headers['Authorization'] = '';
 
-  queryClient.invalidateQueries('patient-me');
+  queryClient.invalidateQueries('pat-me');
 
   return <DashboardLoading />;
 }

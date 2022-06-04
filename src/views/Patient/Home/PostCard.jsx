@@ -49,7 +49,7 @@ export default function PostCard({ post }) {
   const [isLiked, setIsLiked] = useState(false);
   const [commentsVisible, setCommentsVisible] = useState(false);
   const [comment, setComment] = useState('');
-  const { data: user } = useQuery('patient-me', patientGetMe);
+  const { data: user } = useQuery('pat-me', patientGetMe);
 
   const onEmojiClick = (_, emoji) => {
     setComment(comment + emoji.emoji);
