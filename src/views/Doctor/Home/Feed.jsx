@@ -1,44 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Col, message, Row, Skeleton, Typography, Spin } from 'antd';
+import { Col, Row, Skeleton, Typography, Spin } from 'antd';
 
-import { doctorGetPosts } from 'api/doctor';
 import PostCard from './PostCard';
 import styles from './style.module.css';
 
-export default function Feed() {
-  const [page, setPage] = useState(1);
-  const [posts, setPosts] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const nextPage = page + 1;
-      const data = await doctorGetPosts(nextPage);
-
-      setPosts([...posts, ...data.posts]);
-      setPage(nextPage);
-    } catch (error) {
-      message.error(error.message);
-    }
-  }, [page, posts]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await doctorGetPosts(1);
-
-        setPosts(data.posts || []);
-        setTotal(data.total || 0);
-      } catch (error) {
-        message.error(error.message);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []);
-
+export default function Feed({ loading, posts, fetchData, total }) {
   return loading ? (
     <Row gutter={[0, 25]}>
       {Array(5)

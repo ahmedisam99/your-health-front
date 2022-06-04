@@ -51,6 +51,7 @@
 
 .postCardContent {
   padding-inline-start: 75px;
+  white-space: pre-line;
   color: #707070;
 }
 

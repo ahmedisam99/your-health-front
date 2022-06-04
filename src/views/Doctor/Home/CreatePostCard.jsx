@@ -1,19 +1,47 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { Avatar, Button, Col, Dropdown, Image, Input, Row } from 'antd';
+import {
+  Avatar,
+  Button,
+  Col,
+  Dropdown,
+  Image,
+  Input,
+  message,
+  Row,
+} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import EmojiPicker from 'emoji-picker-react';
 
-import { doctorGetMe } from 'api/doctor';
+import { doctorGetMe, doctorCreatePost } from 'api/doctor';
 import faceImg from 'assets/icons/face.png';
 import styles from './style.module.css';
 
-export default function CreatePostCard() {
+export default function CreatePostCard({ posts, setPosts }) {
   const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(false);
   const { data: user } = useQuery('doctor-me', doctorGetMe);
 
   const onEmojiClick = (_, emoji) => {
     setContent(content + emoji.emoji);
+  };
+
+  const handleCreate = async () => {
+    if (!content) return;
+    setLoading(true);
+
+    try {
+      const data = await doctorCreatePost(content);
+
+      setPosts([data, ...posts]);
+      setContent('');
+    } catch (error) {
+      message.error(
+        error.response?.data?.message || 'حدث خطأ أثناء تحميل المنشورات',
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -60,7 +88,8 @@ export default function CreatePostCard() {
             <Button
               className={styles.createPostCardFooterPostBtn}
               type='primary'
-              onClick={() => {}}>
+              onClick={handleCreate}
+              loading={loading}>
               نشر
             </Button>
           </Col>
