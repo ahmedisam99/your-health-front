@@ -30,7 +30,7 @@ export default function PatientDoctorsView() {
           <Col span={24}>
             <Row gutter={[15, 15]}>
               {doctors.map((doctor) => (
-                <Col span={6} key={doctor.id}>
+                <Col span={6} key={doctor._id}>
                   <DoctorCard doctor={doctor} />
                 </Col>
               ))}
