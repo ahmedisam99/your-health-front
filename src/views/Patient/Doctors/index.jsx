@@ -1,11 +1,17 @@
-import { Col, Row, Spin, Typography } from 'antd';
+import { useState } from 'react';
+import { Col, Modal, Row, Spin, Typography } from 'antd';
 import { patientGetDoctors } from 'api/patient';
 
 import PatientLayout from 'components/patient/PatientLayout';
 import { useQuery } from 'react-query';
 import DoctorCard from './DoctorCard';
+import OrderModalBody from './OrderModalBody';
 
 export default function PatientDoctorsView() {
+  const [orderModal, setOrderModal] = useState({
+    open: false,
+    doctor: null,
+  });
   const { data: doctors, isLoading } = useQuery(
     'pat-doctors',
     patientGetDoctors,
@@ -31,13 +37,25 @@ export default function PatientDoctorsView() {
             <Row gutter={[15, 15]}>
               {doctors.map((doctor) => (
                 <Col span={6} key={doctor._id}>
-                  <DoctorCard doctor={doctor} />
+                  <DoctorCard doctor={doctor} setOrderModal={setOrderModal} />
                 </Col>
               ))}
             </Row>
           </Col>
         )}
       </Row>
+
+      <Modal
+        title='تقدم بطلب جديد'
+        visible={orderModal.open}
+        destroyOnClose
+        footer={null}
+        onCancel={() => setOrderModal({ open: false, doctor: null })}>
+        <OrderModalBody
+          doctor={orderModal.doctor}
+          setOrderModal={setOrderModal}
+        />
+      </Modal>
     </PatientLayout>
   );
 }

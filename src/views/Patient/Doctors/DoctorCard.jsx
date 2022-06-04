@@ -2,11 +2,7 @@ import { Button, Image, Space, Typography } from 'antd';
 
 import styles from './style.module.css';
 
-export default function DoctorCard({ doctor }) {
-  const onOrder = () => {
-    console.log('doctor._id', doctor._id);
-  };
-
+export default function DoctorCard({ doctor, setOrderModal }) {
   return (
     <div className={styles.doctorCard}>
       <Space className='yh-w-100' direction='vertical' align='center' size={10}>
@@ -39,7 +35,9 @@ export default function DoctorCard({ doctor }) {
           {doctor.phoneNumber}
         </Typography.Title>
 
-        <Button type='primary' onClick={onOrder}>
+        <Button
+          type='primary'
+          onClick={() => setOrderModal({ open: true, doctor })}>
           طلب حجز
         </Button>
       </Space>
