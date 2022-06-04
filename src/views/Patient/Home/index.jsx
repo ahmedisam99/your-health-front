@@ -12,15 +12,11 @@ export default function PatientHomeView() {
           <Typography.Title level={2}>الرئيسية</Typography.Title>
         </Col>
 
-        <Col span={16}>
-          <Row gutter={[0, 25]}>
-            <Col span={24}>
-              <Feed />
-            </Col>
-          </Row>
+        <Col span={17}>
+          <Feed />
         </Col>
 
-        <Col span={8}>
+        <Col span={7}>
           <div className={styles.patientsSection}></div>
         </Col>
       </Row>

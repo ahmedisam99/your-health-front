@@ -13,7 +13,7 @@ export default function DoctorHomeView() {
           <Typography.Title level={2}>الرئيسية</Typography.Title>
         </Col>
 
-        <Col span={16}>
+        <Col span={17}>
           <Row gutter={[0, 25]}>
             <Col span={24}>
               <CreatePostCard />
@@ -25,7 +25,7 @@ export default function DoctorHomeView() {
           </Row>
         </Col>
 
-        <Col span={8}>
+        <Col span={7}>
           <div className={styles.patientsSection}></div>
         </Col>
       </Row>
