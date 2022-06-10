@@ -9,9 +9,11 @@ import {
   Typography,
 } from 'antd';
 import { patientCreateOrder } from 'api/patient';
+import { useQueryClient } from 'react-query';
 
 export default function OrderModalBody({ doctor, setOrderModal }) {
   const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   const onOrder = async (values) => {
     if (!values.content) return;
@@ -19,6 +21,8 @@ export default function OrderModalBody({ doctor, setOrderModal }) {
 
     try {
       await patientCreateOrder(values);
+      queryClient.refetchQueries('pat-orders');
+      queryClient.refetchQueries('doctor-orders');
       message.success('تم إرسال الطلب بنجاح');
       setOrderModal({ open: false, doctor: null });
     } catch (error) {
