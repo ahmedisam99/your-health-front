@@ -22,7 +22,7 @@ import Icon, {
 } from '@ant-design/icons';
 import EmojiPicker from 'emoji-picker-react';
 
-import { doctorGetMe, doctorCreateComment } from 'api/doctor';
+import { doctorGetMe, doctorCreateComment, doctorLikePost } from 'api/doctor';
 import faceImg from 'assets/icons/face.png';
 import styles from './style.module.css';
 
@@ -62,6 +62,7 @@ export default function PostCard({ post }) {
       setIsLiked(false);
       post.likes--;
     } else {
+      doctorLikePost(post._id);
       setIsLiked(true);
       post.likes++;
     }
