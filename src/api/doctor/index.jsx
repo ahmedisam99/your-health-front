@@ -4,3 +4,5 @@ export * from './get-posts';
 export * from './create-post';
 export * from './create-comment';
 export * from './like-post';
+export * from './get-my-orders';
+export * from './get-my-patients';

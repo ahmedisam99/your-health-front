@@ -5,6 +5,8 @@ import { doctorGetMe } from 'api/doctor';
 import DashboardLoading from 'components/DashboardLoading';
 import DoctorHomeView from 'views/Doctor/Home';
 import DoctorLogoutView from 'views/Doctor/Logout';
+import DoctorOrdersView from 'views/Doctor/Orders';
+import DoctorPatientsView from 'views/Doctor/Patients';
 
 export default function DoctorRouter() {
   const {
@@ -29,6 +31,8 @@ export default function DoctorRouter() {
     <BrowserRouter basename='/doctor'>
       <Switch>
         <Route exact path='/' component={DoctorHomeView} />
+        <Route exact path='/patients' component={DoctorPatientsView} />
+        <Route exact path='/orders' component={DoctorOrdersView} />
         <Route exact path='/logout' component={DoctorLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
