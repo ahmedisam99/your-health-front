@@ -12,6 +12,7 @@ export default function OrderCard({ order }) {
       await patientCancelOrder(order._id);
       queryClient.refetchQueries('pat-orders');
       queryClient.refetchQueries('doctor-orders');
+      queryClient.refetchQueries('doctor-reports');
     } catch (error) {
       console.error(error);
     }

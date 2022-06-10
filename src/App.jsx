@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ConfigProvider } from 'antd';
 import {
   QueryClient,
@@ -8,6 +9,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import ar from 'antd/lib/locale/ar_EG';
 
 import Router from './router';
+import ReportsContext from 'contexts/ReportsContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,10 +29,18 @@ setReactQueryLogger({
 });
 
 export default function App() {
+  const [reportsContextValue, setReportsContextValue] = useState(317);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ConfigProvider direction='rtl' locale={ar}>
-        <Router />
+        <ReportsContext.Provider
+          value={{
+            value: reportsContextValue,
+            setValue: setReportsContextValue,
+          }}>
+          <Router />
+        </ReportsContext.Provider>
 
         <ReactQueryDevtools />
       </ConfigProvider>

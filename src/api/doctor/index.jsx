@@ -8,3 +8,4 @@ export * from './get-my-orders';
 export * from './get-my-patients';
 export * from './approve-order';
 export * from './cancel-order';
+export * from './get-reports';

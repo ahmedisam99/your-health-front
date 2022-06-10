@@ -7,6 +7,7 @@ import DoctorHomeView from 'views/Doctor/Home';
 import DoctorLogoutView from 'views/Doctor/Logout';
 import DoctorOrdersView from 'views/Doctor/Orders';
 import DoctorPatientsView from 'views/Doctor/Patients';
+import DoctorReportsView from 'views/Doctor/Reports';
 
 export default function DoctorRouter() {
   const {
@@ -33,6 +34,7 @@ export default function DoctorRouter() {
         <Route exact path='/' component={DoctorHomeView} />
         <Route exact path='/patients' component={DoctorPatientsView} />
         <Route exact path='/orders' component={DoctorOrdersView} />
+        <Route exact path='/reports' component={DoctorReportsView} />
         <Route exact path='/logout' component={DoctorLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
