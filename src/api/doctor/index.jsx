@@ -6,3 +6,5 @@ export * from './create-comment';
 export * from './like-post';
 export * from './get-my-orders';
 export * from './get-my-patients';
+export * from './approve-order';
+export * from './cancel-order';

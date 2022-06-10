@@ -1,7 +1,33 @@
 import { Button, Col, Image, Row, Space, Typography } from 'antd';
+import { useQueryClient } from 'react-query';
+
+import { doctorApproveOrder, doctorCancelOrder } from 'api/doctor';
 import styles from './style.module.css';
 
 export default function OrderCard({ order }) {
+  const queryClient = useQueryClient();
+
+  const handleCancel = async () => {
+    try {
+      await doctorCancelOrder(order._id);
+      queryClient.refetchQueries('pat-orders');
+      queryClient.refetchQueries('doctor-orders');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleApprove = async () => {
+    try {
+      await doctorApproveOrder(order._id);
+      queryClient.refetchQueries('pat-orders');
+      queryClient.refetchQueries('doctor-orders');
+      queryClient.refetchQueries('doctor-patients');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Row className={styles.orderCard} gutter={0}>
       <Col className={styles.orderCardDoctorCard} span={7}>
@@ -49,10 +75,13 @@ export default function OrderCard({ order }) {
         </Typography.Paragraph>
 
         <Space className={styles.orderCardContentCardBtnsSpace}>
-          <Button type='primary'>إلغاء الطلب</Button>
+          <Button type='primary' onClick={handleCancel}>
+            إلغاء الطلب
+          </Button>
 
           <Button
             className={styles.orderCardContentCardSucessBtn}
+            onClick={handleApprove}
             type='primary'>
             قبول الطلب
           </Button>
