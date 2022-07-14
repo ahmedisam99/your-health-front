@@ -87,7 +87,9 @@ export default function ContactView() {
                   <Space direction='horizontal' align='center' size={15}>
                     <PhoneFilled className={styles.icon} />
 
-                    <Typography.Title level={3}>+972595659707</Typography.Title>
+                    <Typography.Title style={{ direction: 'ltr' }} level={3}>
+                      +972595659707
+                    </Typography.Title>
                   </Space>
                 </Space>
               </Col>

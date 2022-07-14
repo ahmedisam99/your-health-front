@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { Col, Row, Space, Typography } from 'antd';
 import Icon, {
@@ -6,11 +6,34 @@ import Icon, {
   UserOutlined,
   UserSwitchOutlined,
 } from '@ant-design/icons';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
 import { doctorGetReports } from 'api/doctor';
 import ReportsContext from 'contexts/ReportsContext';
 import DoctorLayout from 'components/doctor/DoctorLayout';
 import styles from './style.module.css';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+);
+
+ChartJS.defaults.font.size = 14;
+ChartJS.defaults.font.family = `'Noto Kufi Arabic', 'Noto Naskh Arabic', 'Noto Sans',
+'Noto Sans Arabic', 'monospace', 'Tahoma', 'sans-serif'`;
 
 export default function DoctorReportsView() {
   const { data: reports } = useQuery('doctor-reports', doctorGetReports, {
@@ -19,9 +42,48 @@ export default function DoctorReportsView() {
   });
   const { value } = useContext(ReportsContext);
 
+  const options = useMemo(
+    () => ({
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: false,
+        },
+      },
+    }),
+    [],
+  );
+
+  const data = useMemo(
+    () => ({
+      labels: ['التقارير'],
+      datasets: [
+        {
+          label: 'عينات قيد الإنتظار',
+          data: [reports?.numOfOrders || 0],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        {
+          label: 'عدد المرضى',
+          data: [reports?.numOfPatiens || 0],
+          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        },
+        {
+          label: 'عدد المتعافيين',
+          data: [value || 0],
+          backgroundColor: 'rgba(17, 5, 132, 0.5)',
+        },
+      ],
+    }),
+    [reports?.numOfOrders, reports?.numOfPatiens, value],
+  );
+
   return (
     <DoctorLayout>
-      <Row gutter={[50, 15]}>
+      <Row gutter={[50, 25]}>
         <Col span={24}>
           <Typography.Title level={2}>التقارير</Typography.Title>
         </Col>
@@ -100,6 +162,10 @@ export default function DoctorReportsView() {
               </Space>
             </Col>
           </Row>
+        </Col>
+
+        <Col span={24}>
+          <Bar options={options} data={data} />
         </Col>
       </Row>
     </DoctorLayout>
