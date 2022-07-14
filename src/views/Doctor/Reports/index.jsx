@@ -64,17 +64,17 @@ export default function DoctorReportsView() {
         {
           label: 'عينات قيد الإنتظار',
           data: [reports?.numOfOrders || 0],
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          backgroundColor: 'rgba(255, 99, 132, 0.65)',
         },
         {
           label: 'عدد المرضى',
           data: [reports?.numOfPatiens || 0],
-          backgroundColor: 'rgba(53, 162, 235, 0.5)',
+          backgroundColor: 'rgba(53, 162, 235, 0.65)',
         },
         {
           label: 'عدد المتعافيين',
           data: [value || 0],
-          backgroundColor: 'rgba(17, 5, 132, 0.5)',
+          backgroundColor: 'rgba(17, 5, 132, 0.65)',
         },
       ],
     }),
