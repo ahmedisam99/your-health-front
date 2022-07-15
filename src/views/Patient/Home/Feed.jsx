@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Col, message, Row, Skeleton, Typography, Spin } from 'antd';
 
-import { doctorGetPosts } from 'api/doctor';
+import { patientGetPosts } from 'api/patient';
 import PostCard from './PostCard';
 import styles from './style.module.css';
 
@@ -15,7 +15,7 @@ export default function Feed() {
   const fetchData = useCallback(async () => {
     try {
       const nextPage = page + 1;
-      const data = await doctorGetPosts(nextPage);
+      const data = await patientGetPosts(nextPage);
 
       setPosts([...posts, ...data.posts]);
       setPage(nextPage);
@@ -27,7 +27,7 @@ export default function Feed() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await doctorGetPosts(1);
+        const data = await patientGetPosts(1);
 
         setPosts(data.posts || []);
         setTotal(data.total || 0);
