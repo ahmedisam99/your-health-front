@@ -1,0 +1,94 @@
+.header {
+  width: calc(100vw - 250px);
+  position: absolute;
+}
+
+.content {
+  padding: 0 220px;
+  margin-block-start: 180px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .content {
+    padding: 0 180px;
+    margin-block-start: 130px;
+  }
+}
+
+/* tabs */
+.tabPane {
+  color: #000;
+  background: #fff;
+  border: 1px solid #000;
+  padding: 8px;
+}
+
+.tabPane:first-child {
+  border-radius: 0 24px 24px 0;
+  border-inline-end: none;
+}
+
+.tabPane:last-child {
+  border-radius: 24px 0 0 24px;
+  border-inline-start: none;
+}
+
+.activeTabpane {
+  background: var(--yh-prim-color);
+  border-color: transparent;
+}
+
+.activeTabpane * {
+  color: #fff !important;
+}
+
+/* feed */
+.infiniteScrollEndMessage {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.postCard {
+  background-color: #ffffff;
+  border: 1px solid #707070;
+  border-radius: 18px;
+  padding: 20px;
+  padding-inline-end: 40px;
+}
+
+.postCardAuthorName {
+  line-height: 12px !important;
+}
+
+.postCardContent {
+  padding-inline-start: 75px;
+  white-space: pre-line;
+  color: #707070;
+}
+
+.postCardActions {
+  padding-inline-start: 90px;
+  padding-inline-end: 55px;
+}
+
+.postCardActionsIcon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.postCardActionsIconHeart {
+  color: var(--yh-prim-color);
+}
+
+.postCardActionsButton,
+.postCardActionsButton:hover,
+.postCardActionsButton:focus {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  height: fit-content !important;
+}
+
+.commentsContainer {
+  padding-inline-start: 75px;
+}

@@ -9,3 +9,4 @@ export * from './get-my-patients';
 export * from './approve-order';
 export * from './cancel-order';
 export * from './get-reports';
+export * from './get-my-posts';

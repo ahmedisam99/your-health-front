@@ -6,7 +6,7 @@ import styles from './style.module.css';
 
 const { Content } = Layout;
 
-export default function DoctorLayout({ children }) {
+export default function DoctorLayout({ isProfileView = false, children }) {
   return (
     <Layout className={styles.layout}>
       <DoctorSidebar />
@@ -14,7 +14,10 @@ export default function DoctorLayout({ children }) {
       <Layout>
         <DoctorNavbar />
 
-        <Content className={styles.content}>{children}</Content>
+        <Content
+          className={isProfileView ? styles.profileContent : styles.content}>
+          {children}
+        </Content>
       </Layout>
     </Layout>
   );
