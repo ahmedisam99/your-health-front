@@ -8,3 +8,6 @@ export * from './like-post';
 export * from './cancel-order';
 export * from './get-posts';
 export * from './create-account';
+export * from './get-profile';
+export * from './update-profile';
+export * from './update-profile-picture';

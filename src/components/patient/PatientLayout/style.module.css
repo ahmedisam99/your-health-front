@@ -2,8 +2,17 @@
   min-height: 100vh;
 }
 
-.content {
+.content,
+.profileContent {
   margin-inline-start: 250px;
   margin-block-start: 64px;
+  overflow-x: hidden;
+}
+
+.content {
   padding: 32px;
+}
+
+.profileContent {
+  padding: 0;
 }
