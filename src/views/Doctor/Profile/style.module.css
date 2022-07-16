@@ -92,3 +92,9 @@
 .commentsContainer {
   padding-inline-start: 75px;
 }
+
+/* edit profile */
+.input {
+  width: 400px !important;
+  border-radius: 10px !important;
+}
