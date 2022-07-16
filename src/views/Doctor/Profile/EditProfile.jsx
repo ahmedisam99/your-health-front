@@ -16,8 +16,8 @@ export default function EditProfileTab() {
 
     try {
       await doctorUpdateProfile(values);
-      queryClient.invalidateQueries('doctor-profile');
-      queryClient.invalidateQueries('doctor-me');
+      await queryClient.invalidateQueries('doctor-me');
+      await queryClient.invalidateQueries('doctor-profile');
       message.success('تم تعديل بيانات الملف الشخصي بنجاح');
     } catch (error) {
       message.error(error.response?.data?.message || 'حدث خطأ ما');

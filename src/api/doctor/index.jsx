@@ -13,3 +13,4 @@ export * from './get-my-posts';
 export * from './get-profile';
 export * from './update-profile-picture';
 export * from './update-profile';
+export * from './create-account';

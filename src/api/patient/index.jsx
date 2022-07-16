@@ -7,3 +7,4 @@ export * from './get-my-orders';
 export * from './like-post';
 export * from './cancel-order';
 export * from './get-posts';
+export * from './create-account';

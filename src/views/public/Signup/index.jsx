@@ -1,25 +1,72 @@
+import { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Button,
   Col,
   Form,
   Image,
   Input,
+  message,
   Row,
   Select,
   Space,
+  Tooltip,
   Typography,
 } from 'antd';
+import Icon, { InfoCircleOutlined } from '@ant-design/icons';
+import { useQueryClient } from 'react-query';
 
+import { doctorInstance, patientInstance } from 'api/axios';
+import { doctorCreateAccount } from 'api/doctor';
+import { patientCreateAccount } from 'api/patient';
 import PublicLayout from 'components/PublicLayout';
 import logoRed from 'assets/images/logo-red.png';
 import styles from './style.module.css';
-import { Link } from 'react-router-dom';
 
 const { Option } = Select;
 
 export default function SignupView() {
-  const onSubmit = (values) => {
-    console.log('values', values);
+  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
+  const history = useHistory();
+
+  const onSubmit = async (values) => {
+    setLoading(true);
+
+    try {
+      if (values.as === 'doctor') {
+        delete values.as;
+
+        const { accessToken } = await doctorCreateAccount(values);
+        localStorage.setItem('doctorAccessToken', accessToken);
+        doctorInstance.defaults.headers[
+          'Authorization'
+        ] = `Bearer ${accessToken}`;
+
+        console.log('accessToken', accessToken);
+
+        await queryClient.refetchQueries('doctor-me');
+        await queryClient.refetchQueries('doctor-profile');
+        history.push('/doctor');
+      } else if (values.as === 'patient') {
+        delete values.as;
+
+        const { accessToken } = await patientCreateAccount(values);
+
+        localStorage.setItem('patientAccessToken', accessToken);
+        patientInstance.defaults.headers[
+          'Authorization'
+        ] = `Bearer ${accessToken}`;
+
+        await queryClient.refetchQueries('pat-me');
+        await queryClient.refetchQueries('pat-profile');
+        history.push('/patient');
+      } else return;
+    } catch (error) {
+      message.error(error.response?.data?.message || 'حدث خطأ ما');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -92,9 +139,30 @@ export default function SignupView() {
               <Form.Item
                 className='yh-mb-0'
                 name='phoneNumber'
-                label='رقم الهاتف'
+                label={
+                  <Space size={5}>
+                    رقم الهاتف
+                    <Tooltip
+                      title={
+                        <>
+                          أدخل رقم الهاتف مبدوءاً بمقدمة الدولة (مثال:{' '}
+                          <div
+                            style={{
+                              direction: 'ltr',
+                              display: 'inline-block',
+                            }}>
+                            +970
+                          </div>
+                          )
+                        </>
+                      }>
+                      <Icon className='yh-gc' component={InfoCircleOutlined} />
+                    </Tooltip>
+                  </Space>
+                }
                 rules={[{ required: true }]}>
                 <Input
+                  style={{ direction: 'ltr', textAlign: 'right' }}
                   className={styles.input}
                   placeholder='أدخل رقم الهاتف الخاص بك'
                 />
@@ -119,8 +187,9 @@ export default function SignupView() {
                 <Button
                   className={['green-btn', styles.input]}
                   type='primary'
-                  htmlType='submit'>
-                  تسجيل الدخول
+                  htmlType='submit'
+                  loading={loading}>
+                  تسجيل
                 </Button>
                 <Typography.Title level={5}>
                   لديك حساب بالفعل؟{' '}

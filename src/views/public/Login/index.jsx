@@ -43,6 +43,7 @@ export default function LoginView() {
             ] = `Bearer ${accessToken}`;
 
             await queryClient.invalidateQueries('doctor-me');
+            await queryClient.invalidateQueries('doctor-profile');
             history.push('/doctor');
           },
           onError: (mutationError) => {
@@ -73,6 +74,7 @@ export default function LoginView() {
             ] = `Bearer ${accessToken}`;
 
             await queryClient.invalidateQueries('pat-me');
+            await queryClient.invalidateQueries('pat-profile');
             history.push('/patient');
           },
           onError: (mutationError) => {
