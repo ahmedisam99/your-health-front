@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Col, message, Row, Typography } from 'antd';
+import { useQuery } from 'react-query';
+import { Avatar, Col, message, Row, Space, Typography } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
-import { doctorGetPosts } from 'api/doctor';
+import { doctorGetMyPatients, doctorGetPosts } from 'api/doctor';
 import DoctorLayout from 'components/doctor/DoctorLayout';
 import CreatePostCard from './CreatePostCard';
 import Feed from './Feed';
@@ -12,6 +14,12 @@ export default function DoctorHomeView() {
   const [posts, setPosts] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  const { data: patients = [] } = useQuery(
+    'doctor-patients',
+    doctorGetMyPatients,
+  );
+
+  console.log('patients', patients);
 
   const fetchData = useCallback(async () => {
     try {
@@ -67,7 +75,41 @@ export default function DoctorHomeView() {
         </Col>
 
         <Col span={7}>
-          <div className={styles.patientsSection}></div>
+          <Row className={styles.patientsSection} gutter={[0, 20]}>
+            <Col span={24}>
+              <Typography.Title className='yh-wc yh-mb-0' level={4}>
+                قائمة المرضى
+              </Typography.Title>
+            </Col>
+
+            {patients.map((patient) => (
+              <Col
+                key={patient._id}
+                className={['yh-center-col', styles.patientCard]}
+                span={24}>
+                <Space direction='horizontal' align='center' size={15}>
+                  <Avatar
+                    alt='Patient'
+                    icon={<UserOutlined />}
+                    src={patient.profilePicture}
+                    size={window.innerWidth <= 1400 ? 40 : 55}
+                  />
+
+                  <Space direction='vertical' align='start' size={5}>
+                    <Typography.Text className={styles.patientCardName}>
+                      {patient.name}
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ direction: 'ltr', display: 'inline-block' }}
+                      className={['yh-gc', styles.patientCardName]}>
+                      {patient.phoneNumber}
+                    </Typography.Text>
+                  </Space>
+                </Space>
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </DoctorLayout>
