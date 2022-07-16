@@ -2,7 +2,6 @@ import { Col, Row, Typography } from 'antd';
 
 import PatientLayout from 'components/patient/PatientLayout';
 import Feed from './Feed';
-import styles from './style.module.css';
 
 export default function PatientHomeView() {
   return (
@@ -14,10 +13,6 @@ export default function PatientHomeView() {
 
         <Col span={17}>
           <Feed />
-        </Col>
-
-        <Col span={7}>
-          <div className={styles.patientsSection}></div>
         </Col>
       </Row>
     </PatientLayout>
