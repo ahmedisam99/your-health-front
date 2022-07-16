@@ -91,6 +91,9 @@
 
 .commentsContainer {
   padding-inline-start: 75px;
+  padding-block: 10px;
+  border-radius: 10px;
+  background-color: #80808030;
 }
 
 /* edit profile */
