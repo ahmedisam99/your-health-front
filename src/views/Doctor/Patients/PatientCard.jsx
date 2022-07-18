@@ -1,10 +1,28 @@
-import { Button, Image, Space, Typography } from 'antd';
+import { Button, Image, message, Space, Typography } from 'antd';
+import { doctorEndPatient } from 'api/doctor';
+import { useState } from 'react';
+import { useQueryClient } from 'react-query';
+import { Link } from 'react-router-dom';
 
 import styles from './style.module.css';
 
 export default function PatientCard({ patient }) {
-  const handleEnd = () => {
-    console.log('patient', patient);
+  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
+
+  const handleEnd = async () => {
+    setLoading(true);
+
+    try {
+      await doctorEndPatient(patient._id);
+      await queryClient.invalidateQueries('doctor-patients');
+
+      message.success('تم إنهاء الحالة بنجاح');
+    } catch (error) {
+      message.error(error.response?.data?.message || 'حدث خطأ ما');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -40,9 +58,15 @@ export default function PatientCard({ patient }) {
           {patient.address}
         </Typography.Title>
 
-        <Button type='primary' onClick={handleEnd}>
-          إنهاء
-        </Button>
+        <Space>
+          <Button type='primary' onClick={handleEnd} loading={loading}>
+            إنهاء
+          </Button>
+
+          <Link to={`/patients/${patient._id}`}>
+            <Button className='green-btn yh-wc yh-fw-500'>الملف الطبي</Button>
+          </Link>
+        </Space>
       </Space>
     </div>
   );

@@ -14,3 +14,4 @@ export * from './get-profile';
 export * from './update-profile-picture';
 export * from './update-profile';
 export * from './create-account';
+export * from './end-patient';
