@@ -101,7 +101,6 @@
 }
 
 .patientsSection {
-  height: 500px;
   background-color: #0e1621;
   border-radius: 27px;
   padding: 15px 25px;
@@ -109,7 +108,7 @@
 
 .patientCard {
   background-color: #fff;
-  padding: 5px 10px;
+  padding: 15px 10px;
   border-radius: 10px;
 }
 

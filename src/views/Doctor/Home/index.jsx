@@ -75,7 +75,7 @@ export default function DoctorHomeView() {
         </Col>
 
         <Col span={7}>
-          <Row className={styles.patientsSection} gutter={[0, 20]}>
+          <Row className={styles.patientsSection} gutter={[0, 15]}>
             <Col span={24}>
               <Typography.Title className='yh-wc yh-mb-0' level={4}>
                 قائمة المرضى
