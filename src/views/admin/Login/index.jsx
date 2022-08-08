@@ -56,7 +56,7 @@ export default function AdminLoginView() {
   };
 
   return (
-    <PublicLayout>
+    <PublicLayout isAdmin>
       <Form className={styles.login} layout='vertical' onFinish={onSubmit}>
         <div className={styles.loginCard}>
           <Row gutter={[0, 25]} justify='center'>
@@ -72,7 +72,7 @@ export default function AdminLoginView() {
 
             <Col className='yh-center-row' span={24}>
               <Typography.Title className='yh-fw-500' level={3}>
-                تسجيل الدخول
+                تسجيل الدخول كمدير
               </Typography.Title>
             </Col>
 

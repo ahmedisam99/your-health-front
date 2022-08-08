@@ -6,10 +6,10 @@ import styles from './style.module.css';
 
 const { Content } = Layout;
 
-export default function PublicLayout({ children }) {
+export default function PublicLayout({ children, isAdmin = false }) {
   return (
     <Layout>
-      <PublicNavbar />
+      <PublicNavbar isAdmin={isAdmin} />
 
       <Content className={styles.content}>{children}</Content>
 

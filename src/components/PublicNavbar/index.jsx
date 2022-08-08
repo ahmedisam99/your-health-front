@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const { Header } = Layout;
 
-export default function PublicNavbar() {
+export default function PublicNavbar({ isAdmin }) {
   const location = useLocation();
 
   const selectedKeys = ['/', '/about', '/crew', '/contact']
@@ -24,33 +24,37 @@ export default function PublicNavbar() {
         width='auto'
       />
 
-      <Menu
-        theme='dark'
-        mode='horizontal'
-        disabledOverflow
-        selectedKeys={selectedKeys}>
-        <Menu.Item key='0'>
-          <Link to='/'>الرئيسية</Link>
-        </Menu.Item>
-        <Menu.Item key='1'>
-          <Link to='/about'>من نحن</Link>
-        </Menu.Item>
-        <Menu.Item key='2'>
-          <Link to='/crew'>الطاقم الطبي</Link>
-        </Menu.Item>
-        <Menu.Item key='3'>
-          <Link to='/contact'>تواصل معنا</Link>
-        </Menu.Item>
-      </Menu>
+      {!isAdmin && (
+        <Menu
+          theme='dark'
+          mode='horizontal'
+          disabledOverflow
+          selectedKeys={selectedKeys}>
+          <Menu.Item key='0'>
+            <Link to='/'>الرئيسية</Link>
+          </Menu.Item>
+          <Menu.Item key='1'>
+            <Link to='/about'>من نحن</Link>
+          </Menu.Item>
+          <Menu.Item key='2'>
+            <Link to='/crew'>الطاقم الطبي</Link>
+          </Menu.Item>
+          <Menu.Item key='3'>
+            <Link to='/contact'>تواصل معنا</Link>
+          </Menu.Item>
+        </Menu>
+      )}
 
-      <Space>
-        <Button className='green-btn' type='primary'>
-          <Link to='/login'>تسجيل الدخول</Link>
-        </Button>
-        <Button type='primary'>
-          <Link to='/signup'>مستخدم جديد</Link>
-        </Button>
-      </Space>
+      {!isAdmin && (
+        <Space>
+          <Button className='green-btn' type='primary'>
+            <Link to='/login'>تسجيل الدخول</Link>
+          </Button>
+          <Button type='primary'>
+            <Link to='/signup'>مستخدم جديد</Link>
+          </Button>
+        </Space>
+      )}
     </Header>
   );
 }
