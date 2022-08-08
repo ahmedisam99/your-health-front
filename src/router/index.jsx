@@ -8,6 +8,7 @@ import CrewView from 'views/public/Crew';
 import ContactView from 'views/public/Contact';
 import DoctorRouter from './Doctor';
 import PatientRouter from './Patient';
+import AdminRouter from './Admin';
 
 export default function Router() {
   return (
@@ -19,6 +20,7 @@ export default function Router() {
         <Route exact path='/contact' component={ContactView} />
         <Route exact path='/crew' component={CrewView} />
         <Route exact path='/about' component={AboutView} />
+        <Route path='/admin' component={AdminRouter} />
         <Route path='/doctor' component={DoctorRouter} />
         <Route path='/patient' component={PatientRouter} />
 
