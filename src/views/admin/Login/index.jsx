@@ -29,7 +29,7 @@ export default function AdminLoginView() {
       { email: values.email, password: values.password },
       {
         onSuccess: async ({ accessToken }) => {
-          localStorage.setItem('admin', accessToken);
+          localStorage.setItem('adminAccessToken', accessToken);
           adminInstance.defaults.headers[
             'Authorization'
           ] = `Bearer ${accessToken}`;
