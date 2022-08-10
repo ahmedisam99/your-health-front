@@ -1,0 +1,17 @@
+.dpv .ant-descriptions-bordered .ant-descriptions-view {
+  border: 3px solid #182533 !important;
+  border-radius: 8px !important;
+}
+
+.dpv .ant-descriptions-bordered .ant-descriptions-row {
+  border-bottom: none !important;
+}
+
+.dpv
+  .ant-descriptions-rtl.ant-descriptions-bordered
+  .ant-descriptions-item-label,
+.dpv
+  .ant-descriptions-rtl.ant-descriptions-bordered
+  .ant-descriptions-item-content {
+  border-left: 3px solid #182533 !important;
+}

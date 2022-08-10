@@ -15,3 +15,4 @@ export * from './update-profile-picture';
 export * from './update-profile';
 export * from './create-account';
 export * from './end-patient';
+export * from './get-pat-medical-profile';
