@@ -11,3 +11,5 @@ export * from './create-account';
 export * from './get-profile';
 export * from './update-profile';
 export * from './update-profile-picture';
+export * from './get-medical-profile';
+export * from './update-medical-profile';

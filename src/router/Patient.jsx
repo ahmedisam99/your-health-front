@@ -8,6 +8,7 @@ import PatientLogoutView from 'views/Patient/Logout';
 import PatientDoctorsView from 'views/Patient/Doctors';
 import PatientOrdersView from 'views/Patient/Orders';
 import PatientProfileView from 'views/Patient/Profile';
+import PatientMedicalProfileView from 'views/Patient/MedicalProfile';
 
 export default function PatientRouter() {
   const {
@@ -35,6 +36,11 @@ export default function PatientRouter() {
         <Route exact path='/doctors' component={PatientDoctorsView} />
         <Route exact path='/orders' component={PatientOrdersView} />
         <Route exact path='/profile' component={PatientProfileView} />
+        <Route
+          exact
+          path='/medical-profile'
+          component={PatientMedicalProfileView}
+        />
         <Route exact path='/logout' component={PatientLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/' />} />
