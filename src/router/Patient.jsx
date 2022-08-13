@@ -9,6 +9,7 @@ import PatientDoctorsView from 'views/Patient/Doctors';
 import PatientOrdersView from 'views/Patient/Orders';
 import PatientProfileView from 'views/Patient/Profile';
 import PatientMedicalProfileView from 'views/Patient/MedicalProfile';
+import PatientComplaintsView from 'views/Patient/Complaints';
 
 export default function PatientRouter() {
   const {
@@ -36,6 +37,7 @@ export default function PatientRouter() {
         <Route exact path='/doctors' component={PatientDoctorsView} />
         <Route exact path='/orders' component={PatientOrdersView} />
         <Route exact path='/profile' component={PatientProfileView} />
+        <Route exact path='/complaints' component={PatientComplaintsView} />
         <Route
           exact
           path='/medical-profile'

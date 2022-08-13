@@ -13,3 +13,5 @@ export * from './update-profile';
 export * from './update-profile-picture';
 export * from './get-medical-profile';
 export * from './update-medical-profile';
+export * from './get-complaints';
+export * from './create-complaint';

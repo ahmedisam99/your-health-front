@@ -1,0 +1,46 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - (40.5px + 15px + 32px + 32px + 64px));
+}
+
+.chatHeader {
+  background-color: #182533;
+  height: 64px;
+  border-radius: 12px 12px 0 0;
+  padding: 0 16px;
+}
+
+.chatBody {
+  flex-grow: 1;
+  padding: 24px;
+}
+
+.chatBody,
+.chatFooter {
+  background-color: #fff;
+}
+
+.chatFooter {
+  height: 64px;
+  border-radius: 0 0 12px 12px;
+  padding: 16px;
+  padding-top: 0;
+  display: flex;
+}
+
+.chatFooterComplaintInput {
+  margin-inline-start: 15px;
+  background-color: #e3e3e3;
+  border-radius: 22px;
+  padding: 0 20px;
+}
+
+.chatFooterComplaintInput > * {
+  background-color: #e3e3e3;
+}
+
+.chatFooterActionsIcon {
+  font-size: 24px;
+  cursor: pointer;
+}
