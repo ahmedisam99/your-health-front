@@ -31,7 +31,7 @@ export default function AdminNavbar() {
         </Badge>
 
         <Typography.Text style={{ direction: 'ltr' }} className='yh-wc'>
-          {user.email}
+          {user.name || user.email}
         </Typography.Text>
       </Space>
 
