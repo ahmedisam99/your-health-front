@@ -16,3 +16,5 @@ export * from './update-profile';
 export * from './create-account';
 export * from './end-patient';
 export * from './get-pat-medical-profile';
+export * from './get-complaints';
+export * from './create-complaint';

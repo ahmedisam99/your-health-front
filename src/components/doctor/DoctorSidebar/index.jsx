@@ -6,6 +6,7 @@ import home from 'assets/icons/home.png';
 import users from 'assets/icons/users.png';
 import orders from 'assets/icons/orders.png';
 import reports from 'assets/icons/reports.png';
+import complaints from 'assets/icons/complaints.png';
 import profile from 'assets/icons/profile.png';
 import logout from 'assets/icons/logout.png';
 import logoRed from 'assets/images/logo-red.png';
@@ -21,6 +22,7 @@ export default function DoctorSidebar() {
     '/patients',
     '/orders',
     '/reports',
+    '/complaints',
     '/profile',
     '/logout',
   ]
@@ -99,6 +101,19 @@ export default function DoctorSidebar() {
           icon={
             <Icon
               component={() => (
+                <Image preview={false} src={complaints} width={25} />
+              )}
+            />
+          }>
+          <Link to='/complaints'>الشكاوى</Link>
+        </Menu.Item>
+
+        <Menu.Item
+          className='yh-w-100'
+          key='5'
+          icon={
+            <Icon
+              component={() => (
                 <Image preview={false} src={profile} width={25} />
               )}
             />
@@ -108,7 +123,7 @@ export default function DoctorSidebar() {
 
         <Menu.Item
           className='yh-w-100'
-          key='5'
+          key='6'
           icon={
             <Icon
               component={() => (
