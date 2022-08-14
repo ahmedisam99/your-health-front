@@ -2,8 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Image, Layout, Menu } from 'antd';
 import Icon from '@ant-design/icons';
 
-import home from 'assets/icons/home.png';
 import users from 'assets/icons/users.png';
+import complaints from 'assets/icons/complaints.png';
 import logout from 'assets/icons/logout.png';
 import logoRed from 'assets/images/logo-red.png';
 import styles from './style.module.css';
@@ -13,7 +13,7 @@ const { Sider } = Layout;
 export default function AdminSidebar() {
   const location = useLocation();
 
-  const selectedKeys = ['/doctors', '/patients', '/logout']
+  const selectedKeys = ['/doctors', '/patients', '/complaints', '/logout']
     .map((path, idx) => (location.pathname === path ? idx.toString() : null))
     .filter(Boolean);
 
@@ -40,7 +40,7 @@ export default function AdminSidebar() {
           key='0'
           icon={
             <Icon
-              component={() => <Image preview={false} src={home} width={25} />}
+              component={() => <Image preview={false} src={users} width={25} />}
             />
           }>
           <Link to='/doctors'>قائمة الأطباء</Link>
@@ -60,6 +60,19 @@ export default function AdminSidebar() {
         <Menu.Item
           className='yh-w-100'
           key='2'
+          icon={
+            <Icon
+              component={() => (
+                <Image preview={false} src={complaints} width={25} />
+              )}
+            />
+          }>
+          <Link to='/complaints'>الشكاوى</Link>
+        </Menu.Item>
+
+        <Menu.Item
+          className='yh-w-100'
+          key='3'
           icon={
             <Icon
               component={() => (

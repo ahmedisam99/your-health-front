@@ -49,6 +49,10 @@ select {
   background: #148a0c;
 }
 
+.acv .rce-citem-body--top-time {
+  margin-left: 15px;
+}
+
 /* Colors */
 .yh-pc {
   color: var(--yh-prim-color) !important;

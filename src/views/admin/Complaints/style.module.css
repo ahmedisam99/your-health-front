@@ -8,7 +8,7 @@
 .chatHeader {
   background-color: #182533;
   height: 64px;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px 0 0 0;
   padding: 0 16px;
 }
 
@@ -45,7 +45,7 @@
 
 .chatFooter {
   height: 64px;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 0 12px;
   padding: 16px;
   padding-top: 0;
   display: flex;
@@ -65,4 +65,13 @@
 .chatFooterActionsIcon {
   font-size: 24px;
   cursor: pointer;
+}
+
+/* chat list */
+.chatListContainer {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 12px 12px 0;
+  border-left: 2px solid #182533;
+  background-color: #fff;
 }

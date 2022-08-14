@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - (40.5px + 15px + 32px + 32px + 64px));
+  max-height: calc(100vh - (40.5px + 15px + 32px + 32px + 64px));
 }
 
 .chatHeader {
@@ -13,7 +14,28 @@
 
 .chatBody {
   flex-grow: 1;
+  overflow-y: auto;
   padding: 24px;
+}
+
+.chatBody::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #182533;
+  box-shadow: inset 0 0 6px #182533;
+  border-radius: 0;
+  background-color: #8d8d8d;
+}
+
+.chatBody::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #8d8d8d;
+}
+
+.chatBody::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 6px #182533;
+  box-shadow: inset 0 0 6px #182533;
+  background-color: #182533;
 }
 
 .chatBody,

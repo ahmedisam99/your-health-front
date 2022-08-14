@@ -7,6 +7,7 @@ import AdminLoginView from 'views/admin/Login';
 import AdminDoctorsView from 'views/admin/doctors';
 import AdminLogoutView from 'views/admin/Logout';
 import AdminPatientsView from 'views/admin/patients';
+import AdminComplaintsView from 'views/admin/Complaints';
 
 export default function AdminRouter() {
   const {
@@ -40,6 +41,7 @@ export default function AdminRouter() {
       <Switch>
         <Route exact path='/doctors' component={AdminDoctorsView} />
         <Route exact path='/patients' component={AdminPatientsView} />
+        <Route exact path='/complaints' component={AdminComplaintsView} />
         <Route exact path='/logout' component={AdminLogoutView} />
 
         <Route path='*' render={() => <Redirect to='/doctors' />} />
