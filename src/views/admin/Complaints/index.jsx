@@ -78,8 +78,9 @@ export default function AdminComplaintsView() {
     });
 
     setComplaints(_complaints);
-    setActive(Object.keys(_complaints)[0]);
-  }, [data]);
+
+    if (!active) setActive(Object.keys(_complaints)[0]);
+  }, [active, data]);
 
   useEffect(() => {
     if (!isLoading && !isFetching && !!admin && !!complaints && !!active)
