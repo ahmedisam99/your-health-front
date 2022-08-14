@@ -20,8 +20,8 @@ export default function PatientSidebar() {
     '/',
     '/doctors',
     '/orders',
-    '/medical-profile',
     '/complaints',
+    '/medical-profile',
     '/profile',
     '/logout',
   ]
@@ -87,11 +87,11 @@ export default function PatientSidebar() {
           icon={
             <Icon
               component={() => (
-                <Image preview={false} src={profile} width={25} />
+                <Image preview={false} src={complaints} width={25} />
               )}
             />
           }>
-          <Link to='/medical-profile'>الملف الطبي</Link>
+          <Link to='/complaints'>الشكاوى</Link>
         </Menu.Item>
 
         <Menu.Item
@@ -100,11 +100,11 @@ export default function PatientSidebar() {
           icon={
             <Icon
               component={() => (
-                <Image preview={false} src={complaints} width={25} />
+                <Image preview={false} src={profile} width={25} />
               )}
             />
           }>
-          <Link to='/complaints'>الشكاوى</Link>
+          <Link to='/medical-profile'>الملف الطبي</Link>
         </Menu.Item>
 
         <Menu.Item
