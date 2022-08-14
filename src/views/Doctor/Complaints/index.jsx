@@ -65,8 +65,8 @@ export default function DoctorComplaintsView() {
   }, [complaints]);
 
   useEffect(() => {
-    if (!isLoading && !isFetching && !!admin) setLoading(false);
-  }, [admin, isFetching, isLoading]);
+    if (!isLoading && !isFetching) setLoading(false);
+  }, [isFetching, isLoading]);
 
   return (
     <DoctorLayout>
@@ -95,7 +95,7 @@ export default function DoctorComplaintsView() {
                   <Avatar
                     alt='Admin'
                     icon={<UserOutlined />}
-                    src={admin.profilePicture}
+                    src={admin?.profilePicture || ''}
                     size={40}
                   />
 

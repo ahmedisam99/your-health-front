@@ -46,19 +46,26 @@ export default function AdminComplaintsView() {
   };
 
   const handleCreate = () => {
-    if (!complaint) return;
+    if (!complaint || !active) return;
 
-    mutation.mutate(complaint, {
-      onSuccess: () => {
-        queryClient.refetchQueries('admin-complaints');
-        setComplaint('');
+    const splitted = active.split(':');
+    const toModel = splitted[0];
+    const to = splitted[1];
+
+    mutation.mutate(
+      { content: complaint, toModel, to },
+      {
+        onSuccess: () => {
+          queryClient.refetchQueries('admin-complaints');
+          setComplaint('');
+        },
+        onError: (error) => {
+          message.error(
+            error.response?.data?.message || 'حدث خطأ أثناء تحميل المنشورات',
+          );
+        },
       },
-      onError: (error) => {
-        message.error(
-          error.response?.data?.message || 'حدث خطأ أثناء تحميل المنشورات',
-        );
-      },
-    });
+    );
   };
 
   useEffect(() => {
