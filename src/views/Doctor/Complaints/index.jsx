@@ -65,7 +65,73 @@ export default function DoctorComplaintsView() {
   }, [complaints]);
 
   useEffect(() => {
-    if (!isLoading && !isFetching) setLoading(false);
+    if (!isLoading && !isFetching) {
+      setLoading(true);
+      const elements = document.querySelectorAll('.rce-mbox-time.non-copiable');
+
+      elements.forEach((element) => {
+        const timeAgo = element.getAttribute('data-text');
+        const timeAgoArr = timeAgo.split(' ');
+        let number, ago;
+        if (Number.isInteger(Number(timeAgoArr[0]))) {
+          number = timeAgoArr[0];
+          ago = timeAgoArr[1];
+        } else if (Number.isInteger(Number(timeAgoArr[1]))) {
+          number = timeAgoArr[1];
+          ago = timeAgoArr[2];
+        } else {
+          number = 0;
+          ago = 'just now';
+        }
+
+        const timeAgoArabicMap = {
+          year: 'سنة',
+          years: 'سنوات',
+          months: 'شهر',
+          month: 'أشهر',
+          weeks: 'اسبوع',
+          week: 'اسابيع',
+          day: 'يوم',
+          days: 'أيام',
+          hour: 'ساعة',
+          hours: 'ساعات',
+          minute: 'دقيقة',
+          minutes: 'دقائق',
+          second: 'ثانية',
+          seconds: 'ثواني',
+          'just now': 'لحظة',
+
+          سنة: 'سنة',
+          سنوات: 'سنوات',
+          شهر: 'شهر',
+          أشهر: 'أشهر',
+          اسبوع: 'اسبوع',
+          اسابيع: 'اسابيع',
+          يوم: 'يوم',
+          أيام: 'أيام',
+          ساعة: 'ساعة',
+          ساعات: 'ساعات',
+          دقيقة: 'دقيقة',
+          دقائق: 'دقائق',
+          ثانية: 'ثانية',
+          ثواني: 'ثواني',
+          لحظة: 'لحظة',
+        };
+
+        console.log('timeAgoArr', timeAgoArr);
+
+        if (ago === 'لحظة' || ago === 'just now') {
+          element.setAttribute('data-text', `منذ لحظة`);
+        } else {
+          element.setAttribute(
+            'data-text',
+            `منذ ${number} ${timeAgoArabicMap[ago]}`,
+          );
+        }
+      });
+
+      setLoading(false);
+    }
   }, [isFetching, isLoading]);
 
   return (

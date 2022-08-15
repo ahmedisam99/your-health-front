@@ -13,8 +13,6 @@ export default function DoctorPatientView() {
     () => doctorGetPatientMedicalProfile(patientId),
   );
 
-  console.log('medicalProfile', medicalProfile);
-
   return (
     <DoctorLayout>
       <Row gutter={[50, 15]} className='dpv'>

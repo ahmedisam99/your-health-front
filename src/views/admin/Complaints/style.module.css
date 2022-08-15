@@ -8,6 +8,7 @@
 .chatHeader {
   background-color: #182533;
   height: 64px;
+  min-height: 64px;
   border-radius: 12px 0 0 0;
   padding: 0 16px;
 }
