@@ -10,6 +10,10 @@
   outline: none;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px #182533;
   box-shadow: inset 0 0 6px #182533;

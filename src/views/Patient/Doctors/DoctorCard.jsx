@@ -14,6 +14,7 @@ export default function DoctorCard({ doctor, setOrderModal }) {
             'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png'
           }
           width={80}
+          height={80}
         />
 
         <Typography.Title className='yh-wc' level={5}>
