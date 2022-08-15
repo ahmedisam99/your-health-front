@@ -19,8 +19,6 @@ export default function DoctorHomeView() {
     doctorGetMyPatients,
   );
 
-  console.log('patients', patients);
-
   const fetchData = useCallback(async () => {
     try {
       const nextPage = page + 1;

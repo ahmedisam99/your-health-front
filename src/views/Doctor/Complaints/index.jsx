@@ -118,8 +118,6 @@ export default function DoctorComplaintsView() {
           لحظة: 'لحظة',
         };
 
-        console.log('timeAgoArr', timeAgoArr);
-
         if (ago === 'لحظة' || ago === 'just now') {
           element.setAttribute('data-text', `منذ لحظة`);
         } else {

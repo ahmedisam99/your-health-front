@@ -43,8 +43,6 @@ export default function SignupView() {
           'Authorization'
         ] = `Bearer ${accessToken}`;
 
-        console.log('accessToken', accessToken);
-
         await queryClient.refetchQueries('doctor-me');
         await queryClient.refetchQueries('doctor-profile');
         history.push('/doctor');
